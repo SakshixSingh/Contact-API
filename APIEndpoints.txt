@@ -1,0 +1,13 @@
+//user api
+
+1. register : /api/user/register
+2. login : /api/user/login
+
+//contact api
+
+1. get all contact : /api/contact/
+2. get contact by id : /api/contact/:id
+3. create contact : /api/contact/new [auth req]
+4. update contact : /api/contact/:id [auth req]
+5. delete contact : /api/contact/:id [auth req]
+6. user specific contact : /api/contact/userid/:id [auth req]
