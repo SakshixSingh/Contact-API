@@ -32,10 +32,6 @@ app.use("/api/user", userRouter);
 app.use("/api/contact",contactRouter);
 
 
-
-
-
-
-const port=3001;
+const port=process.env.PORT;
 
 app.listen(port,()=>{console.log(`server is running at ${port}`)});

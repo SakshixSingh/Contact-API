@@ -25,7 +25,7 @@ export const newContact=async (req,res)=>{
         name,email,phone,type,user:req.user
     });
 
-res.json({message:"Contact saved successfully..!",saveContact,success:true});
+res.status(201).json({message:"Contact saved successfully..!",saveContact,success:true});
 
 }
 

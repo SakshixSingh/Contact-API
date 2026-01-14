@@ -30,7 +30,7 @@
 
     if(!validPassword) return res.json({message:"Invalid Password",success:false});
 
-    const token=jwt.sign({userId:user._id},"!@#$%^",{
+    const token=jwt.sign({userId:user._id},process.env.JWT,{
         expiresIn:'1d'
     })
     

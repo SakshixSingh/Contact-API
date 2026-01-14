@@ -6,7 +6,7 @@ export const isAuthenticated=async(req,res,next)=>{
 
     if(!token) return res.json({message:"Login First"});
 
-    const decode=jwt.verify(token,'!@#$%^');
+    const decode=jwt.verify(token,process.env.JWT);
     const id =decode.userId
 
     let user=await User.findById(id);
