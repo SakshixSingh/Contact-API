@@ -2,7 +2,10 @@ import express from "express"
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import bodyParser from "express";
-import { register } from "./controllers/user.js";
+import userRouter from "./Routes/user.js";
+import contactRouter from "./Routes/contact.js";
+
+
 
 const app=express();
 dotenv.config();
@@ -22,9 +25,14 @@ mongoose
     res.json({message:"this is home route working "})
   })
 
-  //user routes
-   //api name: user register
-  app.post('/api/user/register',register);
+  //user router
+app.use("/api/user", userRouter);
+
+//contact router
+app.use("/api/contact",contactRouter);
+
+
+
 
 
 
