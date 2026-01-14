@@ -1,5 +1,6 @@
 import express from "express"
-import { deleteContactbyid, getAllContact, getContactbyid, newContact, updateContact } from "../controllers/contact.js";
+import { deleteContactbyid, getAllContact, getContactbyid, getContactbyUserid, newContact, updateContact } from "../controllers/contact.js";
+import { isAuthenticated } from "../middlewares/Auth.js";
 
 const router =express.Router();
 
@@ -7,7 +8,7 @@ const router =express.Router();
 //@api description: creating contact
 //@api method :post
 //@api endpoint :/api/contact/new
-router.post('/new',newContact);
+router.post('/new',isAuthenticated,newContact);
 
 //get all contact
 //@api description : 
@@ -18,11 +19,14 @@ router.get('/',getAllContact);
 router.get('/:id',getContactbyid);
 
 //update contact by id 
-router.put('/:id',updateContact);
+router.put('/:id',isAuthenticated,updateContact);
 
 
 //delete contact by id
-router.delete('/:id',deleteContactbyid);
+router.delete('/:id',isAuthenticated,deleteContactbyid);
+
+//get user specific contact 
+router.get('/userid/:id',getContactbyUserid);
 
 
 export default router

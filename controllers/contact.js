@@ -22,7 +22,7 @@ export const newContact=async (req,res)=>{
         return res.json({message:"all fileds are required",success:false});
 
     let saveContact =await Contact.create({
-        name,email,phone,type
+        name,email,phone,type,user:req.user
     });
 
 res.json({message:"Contact saved successfully..!",saveContact,success:true});
@@ -68,3 +68,16 @@ export const deleteContactbyid=async(req,res)=>{
 
     res.json({message:"Contact Deleted Succesfully..!",success:true}); 
 }
+
+
+
+//get contact by user id
+
+export const getContactbyUserid=async(req,res)=>{
+    const id=req.params.id;
+    const userContact=await Contact.find({user:id});
+    if(!userContact) return res.json({message:"No Contact find",success:false});
+
+    return res.json({message:"User Specific Contact Fetched",userContact,success:true});
+}
+
